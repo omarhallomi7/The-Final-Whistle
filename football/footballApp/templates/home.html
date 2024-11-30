@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Final Whistle</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="header">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <img src="{% static 'images/logo.jpg' %}" alt="The Final Whistle Logo" class="logo">
+      <!-- <h1 class="site-name">The Final Whistle</h1> -->
+    </div>
+
+    <!-- Middle Section with Items -->
+    <div class="menu-items">
+      <div class="menu-item">
+        <img src="{% static 'images/world_cup.jpg' %}" alt="World Cup" class="menu-icon">
+        <span>World Cup</span>
+      </div>
+      <div class="menu-item">
+        <img src="{% static 'images/la_liga.jpg' %}" alt="La Liga" class="menu-icon">
+        <span>La Liga</span>
+      </div>
+      <div class="menu-item">
+        <img src="{% static 'images/premier_league.jpg' %}" alt="Premier League" class="menu-icon">
+        <span>Premier League</span>
+      </div>
+      <div class="menu-item">
+        <img src="{% static 'images/ligue_1.jpg' %}" alt="Ligue 1" class="menu-icon">
+        <span>Ligue 1</span>
+      </div>
+      <div class="menu-item">
+        <img src="{% static 'images/serie_a.jpg' %}" alt="Serie A" class="menu-icon">
+        <span>Serie A</span>
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search for team...">
+      <button class="search-button">Search</button>
+    </div>
+  </header>
+<!-- Button to Team Matches -->
+<div class="button-container">
+  <a href="{% url 'team-matches' %}" class="button">Go to Search Team Matches In Specific Season</a>
+</div>
+</body>
+</html>

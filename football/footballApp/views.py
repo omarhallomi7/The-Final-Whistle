@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .forms import TeamForm
 from pymongo import MongoClient
 
+def home(request):
+    return render(request, 'home.html')
+
 def team_matches(request):
     matches = []
     team_name = None
