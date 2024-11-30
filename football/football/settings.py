@@ -55,7 +55,7 @@ ROOT_URLCONF = 'football.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Add this if templates are global
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
