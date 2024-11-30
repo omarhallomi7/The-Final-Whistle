@@ -1,12 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matches Played</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends "home.html" %}
+{% block title %}
+Matches Played
+{% endblock %}
+{% block content %}
 <body>
     <h1>Find Matches Played by a Team In A Specific Season</h1>
     <form method="post">
@@ -44,4 +40,4 @@
         <p>No matches found for {{ team_name }} in {{ season }}.</p>
     {% endif %}
 </body>
-</html>
+{% endblock %}

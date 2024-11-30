@@ -11,7 +11,9 @@
   <header class="header">
     <!-- Logo Section -->
     <div class="logo-container">
-      <img src="{% static 'images/logo.jpg' %}" alt="The Final Whistle Logo" class="logo">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'images/logo.jpg' %}" alt="The Final Whistle Logo" class="logo">
+    </a>
       <!-- <h1 class="site-name">The Final Whistle</h1> -->
     </div>
 
@@ -45,9 +47,12 @@
       <button class="search-button">Search</button>
     </div>
   </header>
-<!-- Button to Team Matches -->
-<div class="button-container">
-  <a href="{% url 'team-matches' %}" class="button">Go to Search Team Matches In Specific Season</a>
-</div>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
 </body>
 </html>
