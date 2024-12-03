@@ -1,0 +1,67 @@
+{% extends "home.html" %}
+{% block title %}
+Team Performance and Matches Played
+{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Check Team Performance in a Specific Season</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if win_count is not None %}
+            <!-- Wrapper for left and right sections -->
+            <div class="wrapper">
+                <!-- Performance Section on Left -->
+                <div class="left-section">
+                    <div class="performance-container">
+                        <h2>Performance for {{ team_name }} in the {{ season }} season:</h2>
+                        <ul class="performance-list">
+                            <li>Total Matches Played: <span class="highlight">{{ matches_played_count }}</span></li>
+                            <li>Wins: <span class="highlight">{{ win_count }}</span></li>
+                            <li>Losses: <span class="highlight">{{ loss_count }}</span></li>
+                            <li>Draws: <span class="highlight">{{ draw_count }}</span></li>
+                            <li>Goals Scored: <span class="highlight">{{ goals_scored }}</span></li>
+                            <li>Goals Conceded: <span class="highlight">{{ goals_conceded }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Match Results Section on Right -->
+                <div class="right-section">
+                    {% if matches %}
+                        <div class="matches-container">
+                            <h2 class="table-title">Results for Matches Played by {{ team_name }} in {{ season }}</h2>
+                            <table class="matches-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Home Team</th>
+                                        <th>Away Team</th>
+                                        <th>Result (Home - Away)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for match in matches %}
+                                    <tr>
+                                        <td>{{ match.Date }}</td>
+                                        <td>{{ match.HomeTeam }}</td>
+                                        <td>{{ match.AwayTeam }}</td>
+                                        <td>{{ match.FTHG|floatformat:0 }} - {{ match.FTAG|floatformat:0 }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% elif team_name and season %}
+                        <p class="no-matches">No matches found for {{ team_name }} in {{ season }}.</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
