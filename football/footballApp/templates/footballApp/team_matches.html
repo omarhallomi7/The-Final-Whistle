@@ -29,7 +29,7 @@ Matches Played
                 <td>{{ match.Date }}</td>
                 <td>{{ match.HomeTeam }}</td>
                 <td>{{ match.AwayTeam }}</td>
-                <td>{{ match.FTHG }}-{{ match.FTAG }}</td>
+                <td>{{ match.FTHG|floatformat:0 }}-{{ match.FTAG|floatformat:0 }}</td>
                 <!-- <td>{{ match.FTAG }}</td> -->
                 <!-- <td>{{ match.Winner }}</td>
                 <td>{{ match.Loser }}</td> -->

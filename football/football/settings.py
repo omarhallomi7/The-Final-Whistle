@@ -80,6 +80,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'PREMIER_LEAGUE',  
+        'CLIENT': {
+            'host': 'mongodb+srv://db_user:123456789Aa@the-final-whistle.zyfjo.mongodb.net/',
+            'username': 'db_user',
+            'password': '123456789Aa',
+        }
     }
 }
 

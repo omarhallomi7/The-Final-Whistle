@@ -1,15 +1,15 @@
 from djongo import models
 
 class Match(models.Model):
-    date = models.DateField()
-    home_team = models.CharField(max_length=100)
-    away_team = models.CharField(max_length=100)
-    fthg = models.IntegerField()  # Full-time home goals
-    ftag = models.IntegerField()  # Full-time away goals
-    ftr = models.CharField(max_length=1)  # Result: 'H', 'A', or 'D'
-    winner = models.CharField(max_length=100)
-    loser = models.CharField(max_length=100)
-    season = models.CharField(max_length=9)  # Format: YYYY/YYYY
+    Date = models.DateField()
+    HomeTeam = models.CharField(max_length=100)
+    AwayTeam = models.CharField(max_length=100)
+    FTHG = models.IntegerField()  # Full-time home goals
+    FTAG = models.IntegerField()  # Full-time away goals
+    FTR = models.CharField(max_length=1)  # Result: 'H', 'A', or 'D'
+    Winner = models.CharField(max_length=100)
+    Loser = models.CharField(max_length=100)
+    Season = models.CharField(max_length=9)  # Format: YYYY/YYYY
 
     class Meta:
         db_table = "PREMIER_LEAGUE"  # Match your MongoDB collection name
