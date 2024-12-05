@@ -6,6 +6,21 @@ from .models import Match
 def home(request):
     return render(request, 'home.html')
 
+def world_cup(request):
+    return render(request, 'footballApp/world_cup.html')
+
+def la_liga(request):
+    return render(request, 'footballApp/la_liga.html')
+
+def premier_league(request):
+    return render(request, 'footballApp/premier_league.html')
+
+def ligue_1(request):
+    return render(request, 'footballApp/ligue_1.html')
+
+def serie_a(request):
+    return render(request, 'footballApp/serie_a.html')
+
 def team_performance(request):
     win_count = loss_count = draw_count = matches_played_count = None
     goals_scored = goals_conceded = None

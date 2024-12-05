@@ -13,32 +13,31 @@
     <div class="logo-container">
       <a href="{% url 'home' %}">
         <img src="{% static 'images/logo.jpg' %}" alt="The Final Whistle Logo" class="logo">
-    </a>
-      <!-- <h1 class="site-name">The Final Whistle</h1> -->
+      </a>
     </div>
 
     <!-- Middle Section with Items -->
     <div class="menu-items">
-      <div class="menu-item">
+      <a href="{% url 'world_cup' %}" class="menu-item">
         <img src="{% static 'images/world_cup.jpg' %}" alt="World Cup" class="menu-icon">
         <span>World Cup</span>
-      </div>
-      <div class="menu-item">
+      </a>
+      <a href="{% url 'la_liga' %}" class="menu-item">
         <img src="{% static 'images/la_liga.jpg' %}" alt="La Liga" class="menu-icon">
         <span>La Liga</span>
-      </div>
-      <div class="menu-item">
+      </a>
+      <a href="{% url 'premier_league' %}" class="menu-item">
         <img src="{% static 'images/premier_league.jpg' %}" alt="Premier League" class="menu-icon">
         <span>Premier League</span>
-      </div>
-      <div class="menu-item">
+      </a>
+      <a href="{% url 'ligue_1' %}" class="menu-item">
         <img src="{% static 'images/ligue_1.jpg' %}" alt="Ligue 1" class="menu-icon">
         <span>Ligue 1</span>
-      </div>
-      <div class="menu-item">
+      </a>
+      <a href="{% url 'serie_a' %}" class="menu-item">
         <img src="{% static 'images/serie_a.jpg' %}" alt="Serie A" class="menu-icon">
         <span>Serie A</span>
-      </div>
+      </a>
     </div>
 
     <!-- Search Button -->
