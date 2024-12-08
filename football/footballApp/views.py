@@ -2,6 +2,19 @@ from django.shortcuts import render
 from django.db.models import Q,Sum
 from .forms import TeamForm,HeadToHeadForm
 from .models import Match
+from django.shortcuts import redirect
+from django.urls import reverse
+
+def redirect_search(request):
+    search_type = request.GET.get('search_type')
+
+    if search_type == 'head_to_head':
+        return redirect(reverse('h2h_form'))  # URL name for Head-to-Head Matches
+    elif search_type == 'team_performance':
+        return redirect(reverse('team-performance'))  # URL name for Team Performance
+    
+    return redirect(reverse('home'))  # Default fallback
+
 
 def head_to_head_matches(request):
     matches = None
