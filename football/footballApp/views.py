@@ -1,7 +1,49 @@
 from django.shortcuts import render
 from django.db.models import Q,Sum
-from .forms import TeamForm
+from .forms import TeamForm,HeadToHeadForm
 from .models import Match
+
+def head_to_head_matches(request):
+    matches = None
+    team1_wins = 0
+    team2_wins = 0
+    draws = 0
+
+    if request.method == 'POST':
+        form = HeadToHeadForm(request.POST)
+        if form.is_valid():
+            team1 = form.cleaned_data['team1']
+            team2 = form.cleaned_data['team2']
+
+            # Query matches involving both teams
+            matches = Match.objects.filter(
+                (Q(HomeTeam=team1) & Q(AwayTeam=team2)) |
+                (Q(HomeTeam=team2) & Q(AwayTeam=team1))
+            ).order_by('-Date')
+
+            # Calculate win/loss/draw counts
+            for match in matches:
+                if match.FTR == 'H' and match.HomeTeam == team1:
+                    team1_wins += 1
+                elif match.FTR == 'H' and match.HomeTeam == team2:
+                    team2_wins += 1
+                elif match.FTR == 'A' and match.AwayTeam == team1:
+                    team1_wins += 1
+                elif match.FTR == 'A' and match.AwayTeam == team2:
+                    team2_wins += 1
+                elif match.FTR == 'D':
+                    draws += 1
+    else:
+        form = HeadToHeadForm()
+
+    context = {
+        'form': form,
+        'matches': matches,
+        'team1_wins': team1_wins,
+        'team2_wins': team2_wins,
+        'draws': draws,
+    }
+    return render(request, 'footballApp/h2h_matches_form.html', context)
 
 def home(request):
     return render(request, 'home.html')

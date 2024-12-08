@@ -1,0 +1,62 @@
+{% extends "home.html" %}
+{% block title %}
+Head-to-Head Matches
+{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Find Head-to-Head Matches</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+
+        {% if matches %}
+            <!-- Wrapper for left and right sections -->
+            <div class="wrapper">
+                <!-- Performance Section on Left -->
+                <div class="left-section">
+                    <div class="performance-container">
+                        <h2>Performance Summary:</h2>
+                        <ul class="performance-list">
+                            <li>Wins for {{ form.cleaned_data.team1 }}: <span class="highlight">{{ team1_wins }}</span></li>
+                            <li>Wins for {{ form.cleaned_data.team2 }}: <span class="highlight">{{ team2_wins }}</span></li>
+                            <li>Draws: <span class="highlight">{{ draws }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Match Results Section on Right -->
+                <div class="right-section">
+                    <div class="matches-container">
+                        <h2 class="table-title">Results for Head-to-Head Matches</h2>
+                        <table class="matches-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Home Team</th>
+                                    <th>Away Team</th>
+                                    <th>Result (Home - Away)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for match in matches %}
+                                <tr>
+                                    <td>{{ match.Date }}</td>
+                                    <td>{{ match.HomeTeam }}</td>
+                                    <td>{{ match.AwayTeam }}</td>
+                                    <td>{{ match.FTHG|floatformat:0 }} - {{ match.FTAG|floatformat:0 }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% elif matches is not None %}
+            <p class="no-matches">No matches found.</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
